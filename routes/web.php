@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\KalkulatorController;
 use App\Http\Controllers\ListMahasiswaController;
+use App\Http\Controllers\AssetController;
 
 use function Laravel\Ai\{agent};
 use illuminate\Support\Str;
@@ -11,6 +12,11 @@ use illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/katalog', [AssetController::class, 'indexWeb']);
+Route::get('/katalog', [AssetController::class, 'indexWeb']);
+Route::get('/katalog/{id}', [AssetController::class, 'showWeb']); // Route Detail Web
+Route::get('/katalog/buy/{id}', [AssetController::class, 'buyWeb']); // Route Beli/Aksi Web
 
 // opsi 1
 Route::get('/listmahasiswa', function () {
