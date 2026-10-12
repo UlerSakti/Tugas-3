@@ -17,7 +17,7 @@ class ScientificCalculatorController extends Controller
             'formula' => "$firstNumber ^ $secondNumber",
             'result' => pow($firstNumber, $secondNumber)
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 7: Akar Kuadrat
@@ -31,7 +31,7 @@ class ScientificCalculatorController extends Controller
             'formula' => "√$firstNumber",
             'result' => sqrt($firstNumber)
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 8: Perhitungan Persentase
@@ -45,7 +45,7 @@ class ScientificCalculatorController extends Controller
             'formula' => "$secondNumber% dari $firstNumber",
             'result' => ($firstNumber * $secondNumber) / 100
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 9: Pembulatan
@@ -59,7 +59,7 @@ class ScientificCalculatorController extends Controller
             'formula' => "round($firstNumber, $secondNumber)",
             'result' => round($firstNumber, $secondNumber)
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 10: Nilai Mutlak (Absolute)
@@ -73,6 +73,6 @@ class ScientificCalculatorController extends Controller
             'formula' => "|$firstNumber|",
             'result' => abs($firstNumber)
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 }

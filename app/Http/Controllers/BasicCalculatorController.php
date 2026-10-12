@@ -17,7 +17,7 @@ class BasicCalculatorController extends Controller
             'formula' => "$firstNumber + $secondNumber",
             'result' => $firstNumber + $secondNumber
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 2: Pengurangan
@@ -31,7 +31,7 @@ class BasicCalculatorController extends Controller
             'formula' => "$firstNumber - $secondNumber",
             'result' => $firstNumber - $secondNumber
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 3: Perkalian
@@ -45,7 +45,7 @@ class BasicCalculatorController extends Controller
             'formula' => "$firstNumber * $secondNumber",
             'result' => $firstNumber * $secondNumber
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 4: Pembagian
@@ -59,7 +59,7 @@ class BasicCalculatorController extends Controller
             'formula' => "$firstNumber / $secondNumber",
             'result' => $secondNumber != 0 ? ($firstNumber / $secondNumber) : 'Error (Division by zero)'
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 
     // Function 5: Modulo (Sisa Bagi)
@@ -73,6 +73,6 @@ class BasicCalculatorController extends Controller
             'formula' => "$firstNumber % $secondNumber",
             'result' => $firstNumber % $secondNumber
         ];
-        return response()->json($calculationResult);
+        return view('calculator_result', $calculationResult);
     }
 }
