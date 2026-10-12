@@ -41,6 +41,7 @@ Route::prefix('calc-basic')->group(function () {
     Route::get('/multiply', [BasicCalculatorController::class, 'multiply']);
     Route::get('/divide', [BasicCalculatorController::class, 'divide']);
     Route::get('/modulo', [BasicCalculatorController::class, 'modulo']);
+    Route::get('/fallback', [BasicCalculatorController::class, 'fallback']);
 });
 
 // ROUTER 2: Kalkulator Saintifik (5 Function)
