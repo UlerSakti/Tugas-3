@@ -5,6 +5,9 @@ use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\KalkulatorController;
 use App\Http\Controllers\ListMahasiswaController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\BasicCalculatorController;
+use App\Http\Controllers\ScientificCalculatorController;
+use App\Http\Controllers\FinancialCalculatorController;
 
 use function Laravel\Ai\{agent};
 use illuminate\Support\Str;
@@ -30,6 +33,33 @@ Route::prefix('v1')->group(function(){
 });
 
 Route::get('/datadiri', [DataDiriController::class, 'index']);
+
+// ROUTER 1: Kalkulator Dasar (5 Function)
+Route::prefix('calc-basic')->group(function () {
+    Route::get('/add', [BasicCalculatorController::class, 'add']);
+    Route::get('/subtract', [BasicCalculatorController::class, 'subtract']);
+    Route::get('/multiply', [BasicCalculatorController::class, 'multiply']);
+    Route::get('/divide', [BasicCalculatorController::class, 'divide']);
+    Route::get('/modulo', [BasicCalculatorController::class, 'modulo']);
+});
+
+// ROUTER 2: Kalkulator Saintifik (5 Function)
+Route::prefix('calc-scientific')->group(function () {
+    Route::get('/power', [ScientificCalculatorController::class, 'power']);
+    Route::get('/square-root', [ScientificCalculatorController::class, 'squareRoot']);
+    Route::get('/percentage', [ScientificCalculatorController::class, 'percentage']);
+    Route::get('/round', [ScientificCalculatorController::class, 'roundNumber']);
+    Route::get('/absolute', [ScientificCalculatorController::class, 'absoluteValue']);
+});
+
+// ROUTER 3: Kalkulator Finansial (5 Function)
+Route::prefix('calc-financial')->group(function () {
+    Route::get('/discount', [FinancialCalculatorController::class, 'calculateDiscount']);
+    Route::get('/tax', [FinancialCalculatorController::class, 'calculateTax']);
+    Route::get('/interest', [FinancialCalculatorController::class, 'calculateInterest']);
+    Route::get('/currency', [FinancialCalculatorController::class, 'currencyConvert']);
+    Route::get('/total-bill', [FinancialCalculatorController::class, 'totalBill']);
+});
 
 Route::get('/ai', function () {
     $response = agent(
